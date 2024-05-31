@@ -7,6 +7,7 @@ const bcrypt = require("bcryptjs");
 
 class UserService {
     
+    
     static async register(user: User) {
         user.password = await generateHash(user.password);
         return  await UserRepository.add(user);
