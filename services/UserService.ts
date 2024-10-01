@@ -24,6 +24,22 @@ class UserService {
             }   
             return{logged: false, status: "Incorrect username or password"}
     }
+
+    static async changePassword(email: string, newPassword: string) {
+        try {
+            // Generar el hash de la nueva contraseña
+            const newPasswordHash = await generateHash(newPassword);
+            
+            // Actualizar la contraseña en la base de datos
+            await UserRepository.resetPassword(email, newPasswordHash);
+
+            return { success: true, status: "Contraseña cambiada exitosamente" };
+        } catch (error) {
+            console.error("Error al cambiar la contraseña:", error);
+            throw new Error("Error al cambiar la contraseña");
+        }
+    }
+
 }
 
 export default UserService;

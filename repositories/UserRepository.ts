@@ -15,6 +15,13 @@ class UserRepository {
         const values = [auth.email];
         return db.execute(sql,values)
     }
+
+    static async resetPassword(email: string, newPasswordHash: string) {
+        const sql = 'UPDATE users SET password = ? WHERE email = ?';
+        const values = [newPasswordHash, email];
+        return db.execute(sql, values);
+    }
+
 }
 
 

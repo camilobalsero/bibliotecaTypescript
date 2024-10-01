@@ -16,9 +16,3 @@ export function validator(req:Request, res:Response, next:NextFunction) {
         next();
     };
 
-
-module.exports = {
-  validatorParams,
-  validator
-}
-

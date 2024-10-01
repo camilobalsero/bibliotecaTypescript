@@ -1,6 +1,7 @@
 import express from "express";
 import bodyParser from 'body-parser';
 
+import reestablecer from "./controllers/reestablecerPasswordController";
 import register from './routes/register';
 import auth from './routes/auth';
 import libros from './routes/getLibros'
@@ -14,6 +15,7 @@ const app = express().use(bodyParser.json());
 app.use('/register', register);
 app.use('/auth', auth);
 app.use('/libros', libros)
+app.use('/reestablecer', reestablecer)
 
 const PORT = process.env.PORT || 10101;
 
